@@ -24,6 +24,6 @@ register_converter(DateConverter, 'date')
 urlpatterns = [
     path('', books_view, name='books'),
     path('books/', books_catalog, name='books_catalog'),
-    path('books/<date:date>', books_by_date, name='books_by_date'),
+    path('books/<date:pub_date>/', books_by_date, name='books_by_date'),
     path('admin/', admin.site.urls),
 ]

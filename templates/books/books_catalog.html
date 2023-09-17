@@ -5,16 +5,28 @@
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1>Каталог</h1>
+            <a class="button header" href="{% url 'books_catalog' %}">
+                <h1>Каталог</h1>
+            </a>
         </div>
         <div class="content">
             {% for book in books %}
                 <div class="book">
                     <h2>{{ book.name }}</h2>
                     <p>{{ book.author }}</p>
-                    <p>Дата публикации: {{ book.pub_date }}</p>
+                    <a class="button date" href="{% url 'books_by_date' book.pub_date %}">
+                        <p>Дата публикации: {{ book.pub_date }}</p>
+                    </a>
                 </div>
             {% endfor %}
         </div>
+        <table class="paginator">
+            {% if prev_date %}
+                <a class="button prev-date" href="{% url 'books_by_date' prev_date %}">{{ prev_date_str }}</a>
+            {% endif %}
+            {% if next_date %}
+                <a class="button next-date" href="{% url 'books_by_date' next_date %}">{{ next_date_str }}</a>
+            {% endif %}
+        </table>
     </div>
 {% endblock %}
