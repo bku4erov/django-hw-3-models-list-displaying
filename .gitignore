@@ -1,1 +1,4 @@
 books/config.py
+books/__pycache__
+books/migrations/__pycache__
+main/__pycache__
